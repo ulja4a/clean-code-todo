@@ -131,17 +131,16 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
 
 //cycle over incompleteTaskHolder ul list items
 //for each list item
-const tasks = Array.from(incompleteTaskHolder.children);
+const initializeTasks = function (taskList, checkBoxHandler) {
+  const tasks = Array.from(taskList.children);
 
-tasks.forEach((task) => {
-  bindTaskEvents(task, taskCompleted);
-});
+  tasks.forEach((task) => {
+    bindTaskEvents(task, checkBoxHandler);
+  });
+};
 
-const completedTasks = Array.from(completedTasksHolder.children);
-
-completedTasks.forEach((task) => {
-  bindTaskEvents(task, taskIncomplete);
-});
+initializeTasks(incompleteTaskHolder, taskCompleted);
+initializeTasks(completedTasksHolder, taskIncomplete);
 
 // Issues with usability don't get seen until they are in front of a human tester.
 
